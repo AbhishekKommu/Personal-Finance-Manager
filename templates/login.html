@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Finance Manager - Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="glass-card auth-card">
+        <h2>Finance Tracker</h2>
+        <form id="authForm" data-type="login">
+            <input type="text" id="username" placeholder="Username" required style="width: 100%; margin-bottom: 12px;">
+            <input type="password" id="password" placeholder="Password" required style="width: 100%; margin-bottom: 18px;">
+            <button type="submit" class="btn" style="width: 100%;">Log In</button>
+        </form>
+        <p class="switch-auth">Need an account? <a href="#" onclick="toggleAuth(event)">Register</a></p>
+    </div>
+    <script>
+        function toggleAuth(e) {
+            e.preventDefault();
+            const form = document.getElementById('authForm');
+            const isLogin = form.dataset.type === 'login';
+            form.dataset.type = isLogin ? 'register' : 'login';
+            e.target.textContent = isLogin ? 'Log In' : 'Register';
+            document.querySelector('.switch-auth').childNodes[0].nodeValue = isLogin ? 'Already have an account? ' : 'Need an account? ';
+            document.querySelector('h2').textContent = isLogin ? 'Create Account' : 'Finance Tracker';
+        }
+    </script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

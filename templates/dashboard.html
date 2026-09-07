@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Finance Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="glass-card">
+        <div class="header">
+            <h2>Welcome, {{ username }}</h2>
+            <button id="logoutBtn" class="btn btn-danger">Logout</button>
+        </div>
+
+        <div class="summary-grid">
+            <div class="summary-card">
+                <span>Net Balance</span>
+                <h3 id="totalBalance">$0.00</h3>
+            </div>
+            <div class="summary-card income">
+                <span>Total Income</span>
+                <h3 id="totalIncome">+$0.00</h3>
+            </div>
+            <div class="summary-card expense">
+                <span>Total Expenses</span>
+                <h3 id="totalExpense">-$0.00</h3>
+            </div>
+        </div>
+
+        <form id="txForm" class="form-grid">
+            <input type="text" id="title" placeholder="Description (e.g. Salary, Rent)" required>
+            <input type="number" id="amount" step="0.01" placeholder="Amount" required>
+            <select id="type">
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+            </select>
+            <select id="category">
+                <option value="General">General</option>
+                <option value="Salary">Salary</option>
+                <option value="Food">Food</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Entertainment">Entertainment</option>
+            </select>
+            <button type="submit" class="btn" style="grid-column: span 4;">Add Transaction</button>
+        </form>
+
+        <ul id="txList" class="tx-list"></ul>
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

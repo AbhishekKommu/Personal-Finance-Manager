@@ -1,0 +1,137 @@
+:root {
+    --primary: #10b981;
+    --primary-hover: #059669;
+    --expense: #ef4444;
+    --income: #10b981;
+    --card-bg: rgba(15, 23, 42, 0.75);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Beautiful Animated Dark Gradient Background */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #0f172a, #1e1b4b, #311042, #064e3b);
+    background-size: 400% 400%;
+    animation: gradientBG 18s ease infinite;
+    color: var(--text-main);
+    padding: 20px;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.auth-card {
+    max-width: 400px;
+}
+
+/* Typography & Layout */
+h2 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 700; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+
+/* Summary Grid */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.summary-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.summary-card span { font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 6px; }
+.summary-card h3 { font-size: 1.4rem; font-weight: 700; }
+.summary-card.income h3 { color: var(--income); }
+.summary-card.expense h3 { color: var(--expense); }
+
+/* Form Elements */
+.form-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+input, select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 12px 14px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary);
+}
+
+select option { background: #0f172a; color: var(--text-main); }
+
+.btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn:hover { background: var(--primary-hover); }
+.btn-danger { background: var(--expense); padding: 6px 12px; font-size: 0.85rem; }
+.btn-danger:hover { background: #dc2626; }
+
+/* Transaction List */
+.tx-list { list-style: none; max-height: 300px; overflow-y: auto; }
+.tx-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.tx-details { display: flex; flex-direction: column; gap: 4px; }
+.tx-category { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.tx-amount { font-weight: 700; font-size: 1.05rem; }
+.tx-amount.income { color: var(--income); }
+.tx-amount.expense { color: var(--expense); }
+
+.switch-auth { margin-top: 16px; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+.switch-auth a { color: var(--primary); text-decoration: none; font-weight: 600; }
